@@ -1,0 +1,247 @@
+{
+  "component": {
+    "calm_crawl": [
+      "calm_crawl_00.png",
+      "calm_crawl_01.png",
+      "calm_crawl_02.png",
+      "calm_crawl_03.png",
+      "calm_crawl_04.png",
+      "calm_crawl_05.png"
+    ],
+    "calm_sit": [
+      "calm_sit_00.png",
+      "calm_sit_01.png",
+      "calm_sit_02.png"
+    ],
+    "calm_wave": [
+      "calm_wave_00.png",
+      "calm_wave_01.png",
+      "calm_wave_02.png",
+      "calm_wave_03.png"
+    ],
+    "calm_jump": [
+      "calm_jump_00.png",
+      "calm_jump_01.png",
+      "calm_jump_02.png",
+      "calm_jump_03.png",
+      "calm_jump_04.png",
+      "calm_jump_05.png"
+    ],
+    "calm_hang": [
+      "calm_hang_00.png",
+      "calm_hang_01.png",
+      "calm_hang_02.png",
+      "calm_hang_03.png"
+    ],
+    "calm_climb": [
+      "calm_climb_00.png",
+      "calm_climb_01.png",
+      "calm_climb_02.png",
+      "calm_climb_03.png"
+    ],
+    "calm_walk": [
+      "calm_walk_00.png",
+      "calm_walk_01.png",
+      "calm_walk_02.png",
+      "calm_walk_03.png",
+      "calm_walk_04.png",
+      "calm_walk_05.png"
+    ],
+    "funny_crawl": [
+      "funny_crawl_00.png",
+      "funny_crawl_01.png",
+      "funny_crawl_02.png",
+      "funny_crawl_03.png",
+      "funny_crawl_04.png",
+      "funny_crawl_05.png"
+    ],
+    "funny_sit": [
+      "funny_sit_00.png",
+      "funny_sit_01.png",
+      "funny_sit_02.png"
+    ],
+    "funny_wave": [
+      "funny_wave_00.png",
+      "funny_wave_01.png",
+      "funny_wave_02.png",
+      "funny_wave_03.png"
+    ],
+    "funny_jump": [
+      "funny_jump_00.png",
+      "funny_jump_01.png",
+      "funny_jump_02.png",
+      "funny_jump_03.png",
+      "funny_jump_04.png",
+      "funny_jump_05.png"
+    ],
+    "funny_hang": [
+      "funny_hang_00.png",
+      "funny_hang_01.png",
+      "funny_hang_02.png",
+      "funny_hang_03.png"
+    ],
+    "funny_climb": [
+      "funny_climb_00.png",
+      "funny_climb_01.png",
+      "funny_climb_02.png",
+      "funny_climb_03.png"
+    ],
+    "funny_walk": [
+      "funny_walk_00.png",
+      "funny_walk_01.png",
+      "funny_walk_02.png",
+      "funny_walk_03.png",
+      "funny_walk_04.png",
+      "funny_walk_05.png"
+    ]
+  },
+  "grouped": {
+    "crawl": [
+      "crawl_00.png",
+      "crawl_01.png",
+      "crawl_02.png",
+      "crawl_03.png",
+      "crawl_04.png",
+      "crawl_05.png"
+    ],
+    "calm_crawl": [
+      "calm_crawl_00.png",
+      "calm_crawl_01.png",
+      "calm_crawl_02.png",
+      "calm_crawl_03.png",
+      "calm_crawl_04.png",
+      "calm_crawl_05.png"
+    ],
+    "funny_crawl": [
+      "funny_crawl_00.png",
+      "funny_crawl_01.png",
+      "funny_crawl_02.png",
+      "funny_crawl_03.png",
+      "funny_crawl_04.png",
+      "funny_crawl_05.png"
+    ],
+    "sit": [
+      "sit_00.png",
+      "sit_01.png",
+      "sit_02.png"
+    ],
+    "calm_sit": [
+      "calm_sit_00.png",
+      "calm_sit_01.png",
+      "calm_sit_02.png"
+    ],
+    "funny_sit": [
+      "funny_sit_00.png",
+      "funny_sit_01.png",
+      "funny_sit_02.png"
+    ],
+    "wave": [
+      "wave_00.png",
+      "wave_01.png",
+      "wave_02.png",
+      "wave_03.png"
+    ],
+    "calm_wave": [
+      "calm_wave_00.png",
+      "calm_wave_01.png",
+      "calm_wave_02.png",
+      "calm_wave_03.png"
+    ],
+    "funny_wave": [
+      "funny_wave_00.png",
+      "funny_wave_01.png",
+      "funny_wave_02.png",
+      "funny_wave_03.png"
+    ],
+    "jump": [
+      "jump_00.png",
+      "jump_01.png",
+      "jump_02.png",
+      "jump_03.png",
+      "jump_04.png",
+      "jump_05.png"
+    ],
+    "calm_jump": [
+      "calm_jump_00.png",
+      "calm_jump_01.png",
+      "calm_jump_02.png",
+      "calm_jump_03.png",
+      "calm_jump_04.png",
+      "calm_jump_05.png"
+    ],
+    "funny_jump": [
+      "funny_jump_00.png",
+      "funny_jump_01.png",
+      "funny_jump_02.png",
+      "funny_jump_03.png",
+      "funny_jump_04.png",
+      "funny_jump_05.png"
+    ],
+    "calm_hang": [
+      "calm_hang_00.png",
+      "calm_hang_01.png",
+      "calm_hang_02.png",
+      "calm_hang_03.png"
+    ],
+    "funny_hang": [
+      "funny_hang_00.png",
+      "funny_hang_01.png",
+      "funny_hang_02.png",
+      "funny_hang_03.png"
+    ],
+    "calm_climb": [
+      "calm_climb_00.png",
+      "calm_climb_01.png",
+      "calm_climb_02.png",
+      "calm_climb_03.png"
+    ],
+    "funny_climb": [
+      "funny_climb_00.png",
+      "funny_climb_01.png",
+      "funny_climb_02.png",
+      "funny_climb_03.png"
+    ],
+    "walk": [
+      "walk_00.png",
+      "walk_01.png",
+      "walk_02.png",
+      "walk_03.png",
+      "walk_04.png",
+      "walk_05.png"
+    ],
+    "calm_walk": [
+      "calm_walk_00.png",
+      "calm_walk_01.png",
+      "calm_walk_02.png",
+      "calm_walk_03.png",
+      "calm_walk_04.png",
+      "calm_walk_05.png"
+    ],
+    "funny_walk": [
+      "funny_walk_00.png",
+      "funny_walk_01.png",
+      "funny_walk_02.png",
+      "funny_walk_03.png",
+      "funny_walk_04.png",
+      "funny_walk_05.png"
+    ],
+    "calm_flip": [
+      "calm_flip_00.png",
+      "calm_flip_01.png",
+      "calm_flip_02.png",
+      "calm_flip_03.png",
+      "calm_flip_04.png",
+      "calm_flip_05.png",
+      "calm_flip_06.png"
+    ],
+    "funny_flip": [
+      "funny_flip_00.png",
+      "funny_flip_01.png",
+      "funny_flip_02.png",
+      "funny_flip_03.png",
+      "funny_flip_04.png",
+      "funny_flip_05.png",
+      "funny_flip_06.png"
+    ]
+  }
+}

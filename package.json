@@ -1,0 +1,23 @@
+{
+  "name": "pets-tauri",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "gen:manifest": "python3 /tmp/gen_manifest.py",
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "tauri": "tauri"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^2",
+    "@tauri-apps/plugin-opener": "^2"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2",
+    "playwright": "^1.62.1",
+    "typescript": "~5.6.2",
+    "vite": "^6.0.3"
+  }
+}
