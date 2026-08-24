@@ -1,5 +1,5 @@
 import { invoke } from "@tauri-apps/api/core";
-import { getCurrentWindow } from "@tauri-apps/api/window";
+import { currentMonitor, getCurrentWindow } from "@tauri-apps/api/window";
 import { Pet, loadSprites, GROUND_MARGIN } from "./pet";
 
 const stage = document.getElementById("stage") as HTMLDivElement;
@@ -12,6 +12,11 @@ let obstacles: [number, number, number, number][] = [];
 let groundY = 0;
 let screenW = window.innerWidth;
 let marginExtra = 0;
+
+let canIgnore = false;
+try {
+  canIgnore = !!((window as any).__TAURI__ || (window as any).__TAURI_INTERNALS__);
+} catch {}
 
 function computeGroundY(): number {
   // Tauri 全屏 overlay 覆盖整个屏幕（含 Dock 区域），需扣除 Dock/任务栏高度
@@ -105,12 +110,7 @@ stage.addEventListener("contextmenu", (e) => {
 stage.addEventListener("click", () => menu.classList.add("hidden"));
 
 // 透明区点击穿透：悬停在宠物/菜单上才拦截，否则让点击落到桌面（Tauri）
-// 需 tauri.conf: macOSPrivateApi=true + transparent:true
-let canIgnore = false;
-try {
-  // Tauri v2 withGlobalTauri 时为 __TAURI__, 否则为 __TAURI_INTERNALS__
-  canIgnore = !!((window as any).__TAURI__ || (window as any).__TAURI_INTERNALS__);
-} catch {}
+// 需 tauri.conf: macOSPrivateApi=true + transparent:true（已在 Tauri 侧用底边条窗口规避全屏遮挡）
 if (canIgnore) {
   const win: any = getCurrentWindow() as any;
   // 默认穿透，且 forward:true 保证忽略时仍能收到 mousemove 以便切回
@@ -159,6 +159,28 @@ async function main() {
   const args = parseArgs();
   marginExtra = args.margin;
   updateMetrics();
+
+  // Tauri 底边条窗口：仅覆盖底部 260px，其余桌面天然可点，避免全屏遮挡
+  if (canIgnore) {
+    try {
+      const monitor = await currentMonitor();
+      if (monitor) {
+        const stripH = 260;
+        // monitor.size 是 PhysicalSize，需转逻辑或直接用物理
+        const { PhysicalPosition, PhysicalSize } = await import("@tauri-apps/api/dpi");
+        const width = monitor.size.width;
+        const height = stripH * monitor.scaleFactor;
+        // Y 需扣除 Dock 高度，monitor.workArea 可更准，但用 size - stripH 近似
+        const x = monitor.position.x;
+        const y = monitor.position.y + monitor.size.height - height;
+        const win: any = getCurrentWindow() as any;
+        // @ts-ignore - PhysicalSize/Position 类型与 Logical 混用，Tauri 会自动处理
+        await win.setSize(new PhysicalSize(width, height));
+        await win.setPosition(new PhysicalPosition(x, y));
+        updateMetrics();
+      }
+    } catch {}
+  }
 
   for (let i = 0; i < args.pets; i++) {
     const ch = args.char === "random" ? undefined : (args.char as "calm" | "funny");
