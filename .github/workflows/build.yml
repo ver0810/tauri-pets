@@ -1,8 +1,12 @@
 name: build
 
+permissions:
+  contents: write
+
 on:
   push:
     branches: [main]
+    tags: ['v*']
   workflow_dispatch:
   release:
     types: [published]
