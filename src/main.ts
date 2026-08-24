@@ -105,34 +105,40 @@ stage.addEventListener("contextmenu", (e) => {
 stage.addEventListener("click", () => menu.classList.add("hidden"));
 
 // 透明区点击穿透：悬停在宠物/菜单上才拦截，否则让点击落到桌面（Tauri）
+// 需 tauri.conf: macOSPrivateApi=true + transparent:true
 let canIgnore = false;
 try {
-  // @ts-ignore - __TAURI__ 仅在 Tauri webview 存在
-  canIgnore = !!(window as any).__TAURI__;
+  // Tauri v2 withGlobalTauri 时为 __TAURI__, 否则为 __TAURI_INTERNALS__
+  canIgnore = !!((window as any).__TAURI__ || (window as any).__TAURI_INTERNALS__);
 } catch {}
 if (canIgnore) {
-  const win = getCurrentWindow();
-  // 默认穿透
-  win.setIgnoreCursorEvents(true).catch(() => {});
+  const win: any = getCurrentWindow() as any;
+  // 默认穿透，且 forward:true 保证忽略时仍能收到 mousemove 以便切回
+  // @ts-ignore - forward 需 macOSPrivateApi，类型在旧定义中缺失
+  win.setIgnoreCursorEvents(true, { forward: true }).catch(() => {});
   let lastIgnore = true;
-  stage.addEventListener("mousemove", async (e) => {
-    const el = document.elementFromPoint(e.clientX, e.clientY);
+  const updateIgnore = async (e: MouseEvent) => {
+    const el = document.elementFromPoint(e.clientX, e.clientY) as Element | null;
     const overInteractive = !!(el && (el.closest(".pet") || el.closest("#menu")));
     const shouldIgnore = !overInteractive;
     if (shouldIgnore !== lastIgnore) {
       lastIgnore = shouldIgnore;
       try {
-        await win.setIgnoreCursorEvents(shouldIgnore);
+        if (shouldIgnore) await (win as any).setIgnoreCursorEvents(true, { forward: true });
+        else await win.setIgnoreCursorEvents(false);
       } catch {}
     }
-  });
-  // 离开窗口时恢复穿透
+  };
+  stage.addEventListener("mousemove", updateIgnore);
   stage.addEventListener("mouseleave", async () => {
     if (!lastIgnore) {
       lastIgnore = true;
-      try { await win.setIgnoreCursorEvents(true); } catch {}
+      // @ts-ignore
+      try { await (win as any).setIgnoreCursorEvents(true, { forward: true }); } catch {}
     }
   });
+  // 宠物自身进出也强制切换（更灵敏）
+  stage.addEventListener("mouseover", updateIgnore);
 }
 
 // Rust obstacle fetching
